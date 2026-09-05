@@ -1,0 +1,37 @@
+Bootstrap: docker
+From: condaforge/miniforge3
+
+%environment
+    export BASH_ENV=/opt/etc/bashrc
+    source /opt/etc/bashrc
+
+%files
+    requirements.txt
+%post
+    ENVNAME=rbase
+
+    # Ensure locales packages installed
+    apt-get -y update
+    apt-get install -y locales-all
+    rm -rf /var/lib/apt/lists/*
+
+    # Create target dir for non-root-accessible bashrc
+    mkdir -p /opt/etc
+
+    # Replace these demo packages with the packages you want to add.
+    conda create -n "${ENVNAME}" -f requirements.txt
+
+    conda clean -afy
+
+    # Finalize bashrc file
+    echo "#! /bin/bash\n\n# script to activate the conda environment" > ~/.bashrc
+    conda init bash
+    echo "echo \"Activating ${ENVNAME}\"" >> ~/.bashrc
+    echo "\nconda activate ${ENVNAME}" >> ~/.bashrc
+
+    # Copy bashrc to non-root-accessible location
+    cp ~/.bashrc /opt/etc/bashrc
+
+%runscript
+    exec /bin/bash "$@"
+
