@@ -1,4 +1,4 @@
-# Singularity on Apple Silicon (M4) MacOS
+# Singularity on Apple Silicon (M4) macOS
 
 Author: Mira Sohn
 
@@ -14,7 +14,7 @@ on my MacBook M4 with macOS Tahoe (v26.6.2).
 The following three main tools are required:
 
 - [Homebrew](https://brew.sh/)
-- [Qemu](https://www.qemu.org/)
+- [QEMU](https://www.qemu.org/)
 - [Lima](https://lima-vm.io/)
 
 Briefly, `brew` is a package manager used to install `qemu` and `lima`. Follow
@@ -49,7 +49,7 @@ You have two options for starting your VM.
 - Option A: Initialize a Linux VM and install Singularity in it afterward.
 - Option B: Initialize a Linux VM where Singularity has already been installed.
 
-Here, we chose Option B, as demonstrated below:
+Here, we choose Option B, as demonstrated below:
 
 ```bash
 $ limactl start template://apptainer \
@@ -62,13 +62,13 @@ $ limactl start template://apptainer \
 ```
 
 The `--cpus`, `--disk`, and `--memory` parameters are optional but helpful when building 
-a new Singularity container, which can require varying amounts of temporary disk space. 
-The `--mount-writable` parameter is configured to enable read/write access when creating 
-a new Singularity container. Also, **this step is required only once for a new VM. You 
-can directly execute this VM next time.**
+a new Singularity container or running a script, both of which can require varying amounts of
+temporary disk space. The `--mount-writable` parameter is configured to enable
+read/write access when creating a new Singularity container. Also, **this step is 
+required only once for a new VM. You can directly execute this VM next time.**
 
 Note that Singularity is now [Apptainer](https://apptainer.org/). Visit the following
-resources to follow up on new changes.
+resources to learn about recent changes.
 
 - [Apptainer GitHub](https://github.com/apptainer/apptainer)
 - [Apptainer Documentation](https://apptainer.org/docs/user/main/index.html)
