@@ -6,7 +6,7 @@ Date: September 5, 2026
 
 [Singularity](https://docs.sylabs.io/guides/3.5/user-guide/index.html) containers
 are not supported on Apple Silicon yet. One workaround is to use 
-a Linux virtualizer. This current workflow demonstrates how I set it up 
+a Linux virtualizer. This workflow demonstrates how I set it up 
 on my MacBook M4 with macOS Tahoe (v26.6.2).
 
 ## Install required tools
@@ -27,6 +27,12 @@ Homebrew 6.0.22
 
 Once the `brew` command is available, install `qemu` and `lima` as demonstrated
 below:
+
+```bash
+$ brew install qemu lima
+```
+
+Confirm that both packages are installed.
 
 ```bash
 $ qemu-img --version
