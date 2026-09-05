@@ -188,3 +188,16 @@ GNU General Public License versions 2 or 3.
 For more information about these matters see
 https://www.gnu.org/licenses/.
 ```
+
+Once you finish, close your VM so it does not run in the background.
+
+```bash
+limactl stop apptainer
+```
+
+If you need to change your VM configuration, such as the disk space or memory,
+run the following command:
+
+```bash
+limactl edit apptainer
+```
